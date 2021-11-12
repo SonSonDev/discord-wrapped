@@ -24,7 +24,6 @@ module.exports = {
   "rules": {
     "indent": [ "error", 2, { "ignoredNodes": [ "JSXIdentifier" ]}],
     "react/jsx-indent-props": [ "error", "first" ],
-    "linebreak-style": [ "error", "unix" ],
     "quotes": [ "error", "double" ],
     "semi": [ "error", "always" ],
     "comma-spacing": [ "error", { "before": false, "after": true }],
