@@ -1,3 +1,36 @@
+html {
+  @apply text-gray-700 font-chihaya-jun;
+  font-size: 24px;
+}
+
 body {
-  @apply bg-blue-800;
+  @apply bg-gray-800;
+}
+
+h1 {
+  @apply text-3xl
+}
+
+h2 {
+  @apply text-2xl
+}
+
+h3 {
+  @apply text-xl ml-2
+}
+
+h4 {
+  @apply text-lg
+}
+
+.app-container {
+  @apply container px-1 m-auto;
+  
+  @screen sm {
+    @apply px-4;
+  }
+}
+
+.page {
+  @apply h-screen py-6 overflow-hidden;
 }

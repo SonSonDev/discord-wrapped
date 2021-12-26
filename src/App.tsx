@@ -1,10 +1,29 @@
-import React, { ReactElement } from "react";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  useRoutes,
+} from "react-router-dom";
 
-const App: React.FC = (): ReactElement => {
+import No from "./components/No";
+import Wrapped from "./components/Wrapped";
+
+const App = () => {
+
+  const routes = useRoutes([
+    { path: "/", element: <No /> },
+    { path: "/:id", element: <div className="page"><Wrapped /></div> },
+  ]);
+  return routes;
+};
+
+const AppWrapper: React.FC = (): JSX.Element => {
   return (
-    <div className="App">
+    <div className="app-container">
+      <Router>
+        <App />
+      </Router>
     </div>
   );
 };
 
-export default App;
+export default AppWrapper;

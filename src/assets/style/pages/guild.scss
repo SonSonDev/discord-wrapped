@@ -1,0 +1,67 @@
+.guild {
+  @apply whitespace-nowrap bg-white h-full py-2 px-2 overflow-y-auto overflow-x-hidden rounded-md;
+
+  @screen lg {
+    @apply px-4
+  }
+
+  header {
+    @apply whitespace-pre-wrap mb-3;
+    line-height: 1;
+    
+  }
+  
+  &__name {
+    @apply bg-gray-700 text-white rounded-sm px-1;
+  }
+}
+
+.count {
+  @apply bg-gray-700 text-white rounded-sm px-1;
+}
+
+.user {
+  @apply mt-2 mb-4;
+
+  &__name {
+    @apply flex items-center ml-4;
+    
+    img {
+      @apply w-8 rounded-xl;
+    }
+  }
+}
+
+.categories {
+  @apply flex flex-wrap;
+
+  &__item {
+    @apply mb-6 ml-4 mr-16;
+  }
+}
+
+ul {
+  li {
+    line-height: 1.2;
+  }
+}
+
+.emoji-list {
+  @apply flex flex-wrap max-w-xs;
+
+  &__item {
+    @apply flex items-center my-1 pr-4 w-full;
+
+    @screen xs {
+      @apply w-1/2;
+    }
+    
+    .wrapper {
+      @apply h-6 w-6 overflow-hidden rounded-sm mx-2 flex;
+
+      img {
+        @apply max-h-full max-w-full m-auto flex-shrink-0;
+      }
+    }
+  }
+}

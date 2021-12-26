@@ -1,1 +1,8 @@
+@tailwind base; /* Preflight will be injected here */
+@tailwind components;
+@tailwind utilities;
+
 @import './main/default.scss';
+@import './main/fonts.scss';
+@import './pages/no.scss';
+@import './pages/guild.scss';

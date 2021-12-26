@@ -45,5 +45,6 @@ module.exports = {
     "space-infix-ops": [ "error", { "int32Hint": false }],
     "react/jsx-closing-tag-location": "error",
     "react/jsx-equals-spacing": [ "error", "never" ],
+    "@typescript-eslint/no-var-requires": 0,
   },
 };
