@@ -25,6 +25,13 @@ interface IUser {
       count: number;
     }
   ]
+  mentions: [
+    {
+      username: string;
+      avatar: string;
+      count: 0;
+    }
+  ]
 }
 
 export interface IContent {
@@ -100,12 +107,26 @@ const Wrapped: React.FC = (): JSX.Element => {
                   <h4>Emojis préférés:</h4>
                   <ul className="emoji-list">
                     {
-                      u.emojis.map(e => (
+                      u.emojis.length ? u.emojis.map(e => (
                         <li key={u.name + e.text}
                             className="emoji-list__item">
                               ♦ <div className="wrapper"><img src={e.url} alt={e.text} /></div> <span className="count">{e.count}</span>
                         </li>
-                      ))
+                      )) : "-"
+                    }
+                  </ul>
+                </div>
+
+                <div className="categories__item">
+                  <h4>Mentions:</h4>
+                  <ul className="emoji-list">
+                    {
+                      u.mentions.length ? u.mentions.map(m => (
+                        <li key={m.username}
+                            className="emoji-list__item">
+                              ♦ <div className="wrapper"><img src={m.avatar} alt={m.username} /></div> <span className="name">@{m.username}</span> <span className="count">{m.count}</span>
+                        </li>
+                      )) : "-"
                     }
                   </ul>
                 </div>

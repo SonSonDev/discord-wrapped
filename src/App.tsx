@@ -4,8 +4,8 @@ import {
   useRoutes,
 } from "react-router-dom";
 
-import No from "./components/No";
-import Wrapped from "./components/Wrapped";
+import No from "./pages/No";
+import Wrapped from "./pages/Wrapped";
 
 const App = () => {
 

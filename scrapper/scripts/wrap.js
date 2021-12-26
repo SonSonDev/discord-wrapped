@@ -22,6 +22,10 @@ const messages = allMessages
       date: moment(m.timestamp).format("YYYY-MM-DD HH:mm"),
       author: m.author.username,
       avatar: m.author.avatar ? `https://cdn.discordapp.com/avatars/${m.author.id}/${m.author.avatar}.png` : "https://cdn.discordapp.com/embed/avatars/0.png",
+      mentions: m.mentions.map(m => ({
+        username: m.username,
+        avatar: m.avatar ? `https://cdn.discordapp.com/avatars/${m.id}/${m.avatar}.png` : "https://cdn.discordapp.com/embed/avatars/0.png",
+      })),
       content: m.content,
     };
   });
@@ -87,6 +91,26 @@ function fillChannels (channelsArray, message) {
   return channelsArray;
 }
 
+// GET MENTIONS STATS
+function fillMentions (mentionsArray, message) {
+  message.mentions.forEach(mention => {
+    let index = mentionsArray.findIndex(m => m.username === mention.username);
+    if (index === -1) {
+      mentionsArray.push({
+        username: mention.username,
+        avatar: mention.avatar,
+        count: 0,
+      });
+      index = mentionsArray.length - 1;
+    }
+    mentionsArray[index].count += 1;
+
+    return mentionsArray;
+  });
+
+  return mentionsArray;
+}
+
 // SORT
 function sort (array, type) {
   return array.sort((a, b) => b[type] - a[type]).slice(0, 10);
@@ -108,6 +132,7 @@ output.users = messages.reduce((acc, cur) => {
       words: [],
       channels: [],
       emojis: [],
+      mentions: [],
       links: 0,
       times: [],
       days: [],
@@ -118,6 +143,7 @@ output.users = messages.reduce((acc, cur) => {
   acc[index].words = fillWords(acc[index].words, cur);
   acc[index].channels = fillChannels(acc[index].channels, cur);
   acc[index].emojis = fillEmojis(acc[index].emojis, cur);
+  acc[index].mentions = fillMentions(acc[index].mentions, cur);
   return acc;
 }, []);
 
@@ -125,6 +151,7 @@ output.users.map(u => {
   u.words = sort(u.words, "count");
   u.channels = sort(u.channels, "count");
   u.emojis = sort(u.emojis, "count");
+  u.mentions = sort(u.mentions, "count");
 });
 
 fs.writeFileSync(`${__dirname}/../output/${guildFilename}-wrapped.json`, JSON.stringify(output));

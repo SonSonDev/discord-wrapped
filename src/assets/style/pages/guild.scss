@@ -47,12 +47,12 @@ ul {
 }
 
 .emoji-list {
-  @apply flex flex-wrap max-w-xs;
+  @apply flex flex-wrap max-w-sm;
 
   &__item {
     @apply flex items-center my-1 pr-4 w-full;
 
-    @screen xs {
+    @screen sm {
       @apply w-1/2;
     }
     
@@ -62,6 +62,10 @@ ul {
       img {
         @apply max-h-full max-w-full m-auto flex-shrink-0;
       }
+    }
+
+    .name {
+      @apply mr-1;
     }
   }
 }
