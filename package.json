@@ -22,9 +22,10 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
+    "scrap_guilds": "node scrapper/scripts/scrap_guilds.js",
     "scrap": "node scrapper/scripts/scrap.js",
-    "mapper": "node scrapper/scripts/mapper.js",
-    "wrapper": "node scrapper/scripts/wrapper.js"
+    "map": "node scrapper/scripts/map.js",
+    "wrap": "node scrapper/scripts/wrap.js"
   },
   "eslintConfig": {
     "extends": [

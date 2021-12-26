@@ -78,6 +78,6 @@ const getGuildMessages = async (channels) => {
     await getGuildMessages(channels);
   } catch (e) {
     console.log("error", e);
-    fs.writeFileSync(`${__dirname}/error.json`, JSON.stringify(e));
+    fs.writeFileSync(`${__dirname}/../scrap/error.json`, JSON.stringify(e));
   }
 })();
