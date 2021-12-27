@@ -6,10 +6,10 @@ const fillWords = require("./words");
 
 const wrapUsers = (messages) => {
   let users = messages.reduce((acc, cur) => {
-    let index = acc.findIndex(u => u.name === cur.author);
+    let index = acc.findIndex(u => u.username === cur.author);
     if (index === -1) {
       acc.push({
-        name: cur.author,
+        username: cur.author,
         avatar: cur.avatar,
         count: 0,
         words: [],

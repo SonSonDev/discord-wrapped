@@ -6,7 +6,6 @@ const fillWords = (wordsArray, message) => {
 
   words.forEach(word => {
     let index = wordsArray.findIndex(w => w.text === word);
-    console.log(index);
     if (index === -1) {
       wordsArray.push({
         text: word,

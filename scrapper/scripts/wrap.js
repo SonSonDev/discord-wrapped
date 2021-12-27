@@ -1,6 +1,5 @@
 const fs = require("fs");
 const moment = require("moment");
-const { sort, getTop } = require("./utils");
 const wrapAwards = require("./wrap/awards");
 const wrapChannels = require("./wrap/channels");
 const wrapUsers = require("./wrap/users");

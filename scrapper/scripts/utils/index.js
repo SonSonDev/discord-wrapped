@@ -19,5 +19,5 @@ exports.getTop = function (array, n = 10) {
 };
 
 exports.regex = {
-  emoji: /<(a?):[^<>]+:([0-9]+)>/,
+  emoji: /<(a?):([^<>]+):([0-9]+)>/,
 };

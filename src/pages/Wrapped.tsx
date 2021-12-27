@@ -1,45 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { getContent } from "../utils/axios";
-
-
-interface IUser {
-  name: string;
-  avatar: string;
-  words: [
-    {
-      text: string;
-      count: number;
-    }
-  ]
-  channels: [
-    {
-      name: string;
-      count: number;
-    }
-  ]
-  emojis: [
-    {
-      url: string;
-      text: string;
-      count: number;
-    }
-  ]
-  mentions: [
-    {
-      username: string;
-      avatar: string;
-      count: 0;
-    }
-  ]
-}
-
-export interface IContent {
-  guild: {
-    name: string;
-  }
-  users: IUser[]
-}
+import { IContent } from "../utils/interfaces";
 
 const Wrapped: React.FC = (): JSX.Element => {
   const { id } = useParams() || "";
@@ -48,7 +10,6 @@ const Wrapped: React.FC = (): JSX.Element => {
   const [ loading, setLoading ] = useState(true);
   if (id) {
     useEffect(() => {
-      // Using an IIFE
       (async function anyNameFunction () {
         setLoading(true);
         setContent(await getContent(id));
@@ -74,12 +35,12 @@ const Wrapped: React.FC = (): JSX.Element => {
         <h2>☆ Members ☆</h2>
         {
           content.users.map(u => (
-            <div key={u.name}
+            <div key={u.username}
                  className="user" >
               <div className="user__name">
                 <img src={u.avatar}
-                     alt={`avatar de ${u.name}`} />
-                <h3>--- {u.name} ---</h3>
+                     alt={`avatar de ${u.username}`} />
+                <h3>--- {u.username} ---</h3><span className="count ml-2">{u.count}</span>
               </div>
               <div className="categories">
                 <div className="categories__item">
@@ -87,7 +48,7 @@ const Wrapped: React.FC = (): JSX.Element => {
                   <ul>
                     {
                       u.words.length ? u.words.map(w => (
-                        <li key={u.name + w.text}>♦ {w.text} <span className="count">{w.count}</span></li>
+                        <li key={u.username + w.text}>♦ {w.text} <span className="count">{w.count}</span></li>
                       )) : "-"
                     }
                   </ul>
@@ -98,7 +59,7 @@ const Wrapped: React.FC = (): JSX.Element => {
                   <ul>
                     {
                       u.channels.map(c => (
-                        <li key={u.name + c.name}>♦ {c.name} <span className="count">{c.count}</span></li>
+                        <li key={u.username + c.name}>♦ {c.name} <span className="count">{c.count}</span></li>
                       ))
                     }
                   </ul>
@@ -109,7 +70,7 @@ const Wrapped: React.FC = (): JSX.Element => {
                   <ul className="emoji-list">
                     {
                       u.emojis.length ? u.emojis.map(e => (
-                        <li key={u.name + e.text}
+                        <li key={u.username + e.text}
                             className="emoji-list__item">
                               ♦ <div className="wrapper"><img src={e.url} alt={e.text} /></div> <span className="count">{e.count}</span>
                         </li>
@@ -120,11 +81,11 @@ const Wrapped: React.FC = (): JSX.Element => {
 
                 <div className="categories__item">
                   <h4>Mentions:</h4>
-                  <ul className="emoji-list">
+                  <ul className="user-list">
                     {
                       u.mentions.length ? u.mentions.map(m => (
                         <li key={m.username}
-                            className="emoji-list__item">
+                            className="user-list__item">
                               ♦ <div className="wrapper"><img src={m.avatar} alt={m.username} /></div> <span className="name">@{m.username}</span> <span className="count">{m.count}</span>
                         </li>
                       )) : "-"

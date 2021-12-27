@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IContent } from "../pages/Wrapped";
+import { IContent } from "./interfaces";
 
 const instance = axios.create({
   baseURL: "https://api.github.com/gists",

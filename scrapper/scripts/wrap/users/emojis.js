@@ -8,11 +8,11 @@ const fillEmojis = (emojisArray, message) => {
   words.forEach(word => {
     let index = emojisArray.findIndex(w => w.text === word);
     if (index === -1) {
-
       const m = word.match(regex.emoji);
       emojisArray.push({
         text: word,
-        url: `https://cdn.discordapp.com/emojis/${m[2]}.${m[1] ? "gif" : "png"}`,
+        name: m[2],
+        url: `https://cdn.discordapp.com/emojis/${m[3]}.${m[1] ? "gif" : "png"}`,
         count: 0,
       });
       index = emojisArray.length - 1;
