@@ -145,6 +145,8 @@ output.users = messages.reduce((acc, cur) => {
   return acc;
 }, []);
 
+output.users = sort(output.users, "count");
+
 output.users.map(u => {
   u.words = getTop(sort(u.words, "count"), 10);
   u.channels = getTop(sort(u.channels, "count"), 10);
