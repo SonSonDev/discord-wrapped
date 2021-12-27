@@ -1,9 +1,5 @@
+const { sort, getTop } = require("../../utils");
 const { messagesNumber } = require("./users");
-
-// SORT
-function sort (array, type) {
-  return array.sort((a, b) => b[type] - a[type]).slice(0, 10);
-}
 
 const wrapAwards = (messages) => {
   const awards = {
@@ -23,7 +19,7 @@ const wrapAwards = (messages) => {
     return acc;
   }, awards);
 
-  awards.messagesNumber = sort(awards.messagesNumber, "count");
+  awards.messagesNumber = getTop(sort(awards.messagesNumber, "count"), 5);
 
   return awards;
 };

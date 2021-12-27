@@ -1,4 +1,4 @@
-const { getWords } = require("../../../utils");
+const { getWords } = require("../../utils");
 
 const fillEmojis = (emojisArray, message) => {
   const words = getWords(message.content)

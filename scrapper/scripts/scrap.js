@@ -2,7 +2,7 @@ const fs = require("fs");
 const axios = require("axios");
 const moment = require("moment");
 const _ = require("lodash");
-const { timeout } = require("../utils");
+const { timeout } = require("./utils");
 require("dotenv").config();
 
 
