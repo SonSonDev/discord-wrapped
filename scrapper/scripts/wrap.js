@@ -1,7 +1,8 @@
 const fs = require("fs");
 const moment = require("moment");
 const { getWords } = require("../utils");
-
+const wrapAwards = require("./wrap/awards");
+const wrapChannels = require("./wrap/channels/index");
 const discServIndex = process.argv[2];
 
 const guildListText = fs.readFileSync(`${__dirname}/../scrap/guilds.json`);
@@ -153,5 +154,8 @@ output.users.map(u => {
   u.emojis = sort(u.emojis, "count");
   u.mentions = sort(u.mentions, "count");
 });
+
+output.channels = wrapChannels(messages);
+output.awards = wrapAwards(messages);
 
 fs.writeFileSync(`${__dirname}/../output/${guildFilename}-wrapped.json`, JSON.stringify(output));
