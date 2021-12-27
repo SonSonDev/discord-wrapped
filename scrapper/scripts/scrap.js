@@ -17,7 +17,7 @@ const getGuildUrl = (guild_id) => `/guilds/${guild_id}`,
 
 const instance = axios.create({
   baseURL: base_url,
-  timeout: 4000,
+  timeout: 20000,
   headers: { "Authorization": `Bot ${bot_token}` },
 });
 

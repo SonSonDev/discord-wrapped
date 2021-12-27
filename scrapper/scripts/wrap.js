@@ -56,13 +56,13 @@ function fillWords (wordsArray, message) {
 // GET ENOJIS STATS
 function fillEmojis (emojisArray, message) {
   const words = getWords(message.content)
-    .filter(e => e.match(/<.+:.+>/));
+    .filter(e => e.match(/<(a?):[^<>]+:([0-9]+)>/));
 
   words.forEach(word => {
     let index = emojisArray.findIndex(w => w.text === word);
     if (index === -1) {
 
-      const m = word.match(/<(a?):.+:([0-9]+)>/);
+      const m = word.match(/<(a?):[^<>]+:([0-9]+)>/);
       emojisArray.push({
         text: word,
         url: `https://cdn.discordapp.com/emojis/${m[2]}.${m[1] ? "gif" : "png"}`,
