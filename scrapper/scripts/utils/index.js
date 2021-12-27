@@ -9,3 +9,11 @@ exports.getWords = function (string) {
     .split(/\s/)
     .filter(e => e.length > 5);
 };
+
+exports.sort = function (array, type) {
+  return array.sort((a, b) => b[type] - a[type]);
+};
+
+exports.getTop = function (array, n = 10) {
+  return array.slice(0, n);
+};

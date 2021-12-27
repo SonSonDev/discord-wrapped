@@ -77,7 +77,8 @@ const Wrapped: React.FC = (): JSX.Element => {
             <div key={u.name}
                  className="user" >
               <div className="user__name">
-                <img src={u.avatar} alt={`avatar de ${u.name}`} />
+                <img src={u.avatar}
+                     alt={`avatar de ${u.name}`} />
                 <h3>--- {u.name} ---</h3>
               </div>
               <div className="categories">

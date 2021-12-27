@@ -1,7 +1,8 @@
 const fs = require("fs");
 const moment = require("moment");
-const { getWords } = require("../utils");
-
+const { getWords, sort, getTop } = require("./utils");
+const wrapAwards = require("./wrap/awards");
+const wrapChannels = require("./wrap/channels/index");
 const discServIndex = process.argv[2];
 
 const guildListText = fs.readFileSync(`${__dirname}/../scrap/guilds.json`);
@@ -111,11 +112,6 @@ function fillMentions (mentionsArray, message) {
   return mentionsArray;
 }
 
-// SORT
-function sort (array, type) {
-  return array.sort((a, b) => b[type] - a[type]).slice(0, 10);
-}
-
 output.guild = {
   id: guild.id,
   name: guild.name,
@@ -129,6 +125,7 @@ output.users = messages.reduce((acc, cur) => {
     acc.push({
       name: cur.author,
       avatar: cur.avatar,
+      count: 0,
       words: [],
       channels: [],
       emojis: [],
@@ -140,6 +137,7 @@ output.users = messages.reduce((acc, cur) => {
     index = acc.length - 1;
   }
 
+  acc[index].count += 1;
   acc[index].words = fillWords(acc[index].words, cur);
   acc[index].channels = fillChannels(acc[index].channels, cur);
   acc[index].emojis = fillEmojis(acc[index].emojis, cur);
@@ -147,11 +145,16 @@ output.users = messages.reduce((acc, cur) => {
   return acc;
 }, []);
 
+output.users = sort(output.users, "count");
+
 output.users.map(u => {
-  u.words = sort(u.words, "count");
-  u.channels = sort(u.channels, "count");
-  u.emojis = sort(u.emojis, "count");
-  u.mentions = sort(u.mentions, "count");
+  u.words = getTop(sort(u.words, "count"), 10);
+  u.channels = getTop(sort(u.channels, "count"), 10);
+  u.emojis = getTop(sort(u.emojis, "count"), 10);
+  u.mentions = getTop(sort(u.mentions, "count"), 10);
 });
+
+output.channels = wrapChannels(messages);
+output.awards = wrapAwards(messages);
 
 fs.writeFileSync(`${__dirname}/../output/${guildFilename}-wrapped.json`, JSON.stringify(output));

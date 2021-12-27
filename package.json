@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "@testing-library/react": "^12.1.2",
+    "@types/node": "^17.0.5",
     "axios": "^0.24.0",
     "cra-template-typescript": "1.1.2",
     "dotenv": "^10.0.0",
@@ -22,7 +23,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "scrap_guilds": "node scrapper/scripts/scrap_guilds.js",
+    "scrap-guilds": "node scrapper/scripts/scrap_guilds.js",
     "scrap": "node scrapper/scripts/scrap.js",
     "map": "node scrapper/scripts/map.js",
     "wrap": "node scrapper/scripts/wrap.js"
