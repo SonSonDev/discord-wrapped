@@ -31,7 +31,7 @@ export interface IChannelWrapped extends IChannel {
   emojis: IEmoji[]
 }
 
-export interface Awards {
+export interface IAwards {
   messagesNumber: IUser[]
   wordsNumber: IUser[]
   emojisNumber: IUser[]
@@ -49,5 +49,5 @@ export interface IContent {
   }
   users: IUserWrapped[];
   channels: IChannelWrapped[];
-  awards: Awards;
+  awards: IAwards;
 }
