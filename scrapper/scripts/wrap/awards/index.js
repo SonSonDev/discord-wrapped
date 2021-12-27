@@ -5,17 +5,19 @@ const wrapAwards = (messages) => {
   const awards = {
     messagesNumber: [], //the flooder
     wordsNumber: [], //the dictionary
-    longestMessage: [], //the novelist
     emojisNumber: [], //the nitro
     reactionsNumber: [], //the reactionner
     linksNumber: [], //the shitposter
     picturesNumber: [], //the screenshoter
-    editsNumber: [], //the dysgraphia
+    editsNumber: [], //the error
     mentionsNumber: [], //the beloved
+    spoilsNumber: [], //the spoiler
   };
 
   messages.reduce((acc, cur) => {
     acc.messagesNumber = messagesNumber(acc.messagesNumber, cur);
+
+
     return acc;
   }, awards);
 

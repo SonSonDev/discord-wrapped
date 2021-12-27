@@ -1,0 +1,23 @@
+const { getWords } = require("../../utils");
+
+const fillWords = (wordsArray, message) => {
+  const words = getWords(message.content)
+    .filter(e => !e.match(/<.+>/));
+
+  words.forEach(word => {
+    let index = wordsArray.findIndex(w => w.text === word);
+    console.log(index);
+    if (index === -1) {
+      wordsArray.push({
+        text: word,
+        count: 0,
+      });
+      index = wordsArray.length - 1;
+    }
+    wordsArray[index].count += 1;
+  });
+
+  return wordsArray;
+};
+
+module.exports = fillWords;

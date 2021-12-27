@@ -24,6 +24,7 @@ const wrapChannels = (messages) => {
   channels.map(c => {
     c.users = getTop(sort(c.users, "count"), 5);
     c.emojis = getTop(sort(c.emojis, "count"), 5);
+    return c;
   });
 
   channels = sort(channels, "count");

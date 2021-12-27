@@ -17,3 +17,7 @@ exports.sort = function (array, type) {
 exports.getTop = function (array, n = 10) {
   return array.slice(0, n);
 };
+
+exports.regex = {
+  emoji: /<(a?):[^<>]+:([0-9]+)>/,
+};

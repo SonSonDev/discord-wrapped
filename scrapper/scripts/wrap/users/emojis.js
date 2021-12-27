@@ -1,5 +1,6 @@
 const { getWords, regex } = require("../../utils");
 
+
 const fillEmojis = (emojisArray, message) => {
   const words = getWords(message.content)
     .filter(e => e.match(regex.emoji));
