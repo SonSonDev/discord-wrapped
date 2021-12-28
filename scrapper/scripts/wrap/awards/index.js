@@ -5,9 +5,9 @@ const { messagesNumber, emojisNumber, linksNumber, picturesNumber, editsNumber, 
 const awardsList = [
   [ "messagesNumber", "Nombres de messages", messagesNumber ],
   [ "emojisNumber", "Nombres de emojis", emojisNumber ],
-  [ "linksNumber", "Nombres de liens", linksNumber ],
-  [ "picturesNumber", "Nombres de images", picturesNumber ],
-  [ "editsNumber", "Nombres de modifications", editsNumber ],
+  [ "linksNumber", "Nombres de liens partagés", linksNumber ],
+  [ "picturesNumber", "Nombres d'images envoyées", picturesNumber ],
+  [ "editsNumber", "Nombres de messages modifiés", editsNumber ],
   [ "spoilsNumber", "Nombres de spoils", spoilsNumber ],
   [ "mentionsNumber", "Nombres de fois mentionné", fillMentions ],
 ];

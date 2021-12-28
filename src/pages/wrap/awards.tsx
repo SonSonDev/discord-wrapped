@@ -19,13 +19,13 @@ const Awards: React.FC<IProps> = (props: IProps): JSX.Element => {
   titles["messagesNumber"];
   return (
     <section>
-      <h2>☆ Salons ☆</h2>
+      <h2>☆ Classements ☆</h2>
       <div className="categories">
         {
           props.awards.map((a: IAward) => (
             <div key={a.key}>
               <div className="categories__item">
-                <h4>--- <span>{ a.name }</span> ---:</h4>
+                <h4>--- <span>{ a.name }</span> ---</h4>
 
                 <ul className="user-list">
                   {

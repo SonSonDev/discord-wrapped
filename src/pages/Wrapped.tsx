@@ -59,7 +59,7 @@ const Wrapped: React.FC = (): JSX.Element => {
         <span className="mx-2">/</span>
         <Link to={`/${id}/${Sections.channels}`}>Salons</Link>
         <span className="mx-2">/</span>
-        <Link to={`/${id}/${Sections.awards}`}>Awards</Link>
+        <Link to={`/${id}/${Sections.awards}`}>Classements</Link>
       </nav>
 
       { element }
