@@ -1,16 +1,24 @@
 .guild {
-  @apply whitespace-nowrap bg-white h-full py-2 px-2 overflow-y-auto overflow-x-hidden rounded-md;
+  @apply whitespace-nowrap bg-white h-full py-2 px-2 overflow-y-auto overflow-x-hidden rounded-md lg:px-4;
 
-  @screen lg {
-    @apply px-4
+  &::-webkit-scrollbar {
+    width: 6px;
   }
-
+  &::-webkit-scrollbar-track{
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(black, 20%);
+    border-radius: 3px;
+    &:hover {
+      background-color: rgba(black, 30%);
+    }
+  }
   header {
     @apply whitespace-pre-wrap mb-3;
     line-height: 1;
-    
   }
-  
+
   &__name {
     @apply bg-gray-700 text-white rounded-sm px-1;
   }
@@ -25,7 +33,7 @@
 
   &__name {
     @apply flex items-center ml-4;
-    
+
     img {
       @apply w-8 rounded-xl;
     }

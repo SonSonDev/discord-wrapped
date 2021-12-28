@@ -25,7 +25,7 @@ h4 {
 
 .app-container {
   @apply container px-1 m-auto;
-  
+
   @screen sm {
     @apply px-4;
   }
