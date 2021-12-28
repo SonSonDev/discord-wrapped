@@ -31,23 +31,16 @@ export interface IChannelWrapped extends IChannel {
   emojis: IEmoji[]
 }
 
-export interface IAwards {
-  messagesNumber: IUser[]
-  wordsNumber: IUser[]
-  emojisNumber: IUser[]
-  reactionsNumber: IUser[]
-  linksNumber: IUser[]
-  picturesNumber: IUser[]
-  editsNumber: IUser[]
-  mentionsNumber: IUser[]
-  spoilsNumber: IUser[]
+export interface IAward {
+  key: string;
+  name: string;
+  users: IUser[];
 }
-
 export interface IContent {
   guild: {
     name: string;
   }
   users: IUserWrapped[];
   channels: IChannelWrapped[];
-  awards: IAwards;
+  awards: IAward[];
 }

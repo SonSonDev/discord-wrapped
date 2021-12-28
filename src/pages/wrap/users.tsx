@@ -8,7 +8,7 @@ interface IProp {
 const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
   return (
     <section>
-      <h2>☆ Members ☆</h2>
+      <h2>☆ Membres ☆</h2>
       {
         props.users.map(u => (
           <div key={u.username}

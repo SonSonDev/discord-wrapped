@@ -8,10 +8,10 @@ import No from "./pages/No";
 import Wrapped from "./pages/Wrapped";
 
 const App = () => {
-
   const routes = useRoutes([
     { path: "/", element: <No /> },
     { path: "/:id", element: <div className="page"><Wrapped /></div> },
+    { path: "/:id/:section", element: <div className="page"><Wrapped /></div> },
   ]);
   return routes;
 };

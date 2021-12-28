@@ -27,8 +27,6 @@ const wrapChannels = (messages) => {
     return c;
   });
 
-  channels = sort(channels, "count");
-
   return channels;
 };
 

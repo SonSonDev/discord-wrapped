@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { getContent } from "../utils/axios";
 import { IContent } from "../utils/interfaces";
 import Awards from "./wrap/awards";
 import ChannelsWrapped from "./wrap/channels";
 import UsersWrapped from "./wrap/users";
 
+enum Sections {
+  users = "users",
+  channels = "channels",
+  awards = "awards",
+}
+
 const Wrapped: React.FC = (): JSX.Element => {
-  const { id } = useParams() || "";
+  const { id, section } = useParams() || {};
 
   const [ content, setContent ] = useState<IContent>({} as IContent);
   const [ loading, setLoading ] = useState(true);
@@ -27,17 +33,36 @@ const Wrapped: React.FC = (): JSX.Element => {
     return <Navigate replace to="/" />;
   }
 
+  let element: JSX.Element = <></>;
+  if (!section || section === Sections.users) {
+    element = <UsersWrapped users={content.users} />;
+  } else if (section === Sections.channels) {
+    element = <ChannelsWrapped channels={content.channels} />;
+  } else if (section === Sections.awards) {
+    element = <Awards awards={content.awards} />;
+  } else if (section) {
+    element = <Navigate replace to={`/${id}`} />;
+  }
+
   return (
     <div className="guild">
       <header>
         <h1>
-            Discord Wrapped of <span className="guild__name whitespace-nowrap">{content.guild.name}</span> 2021
+          Discord Wrapped of
+          <span className="guild__name whitespace-nowrap mx-3">{content.guild.name}</span>
+          2021
         </h1>
       </header>
 
-      <UsersWrapped users={content.users} />
-      <ChannelsWrapped channels={content.channels} />
-      <Awards awards={content.awards} />
+      <nav className="mb-4">
+        <Link to={`/${id}/${Sections.users}`}>Membres</Link>
+        <span className="mx-2">/</span>
+        <Link to={`/${id}/${Sections.channels}`}>Salons</Link>
+        <span className="mx-2">/</span>
+        <Link to={`/${id}/${Sections.awards}`}>Awards</Link>
+      </nav>
+
+      { element }
     </div>
   );
 };
