@@ -31,7 +31,7 @@ const Wrapped: React.FC = (): JSX.Element => {
     <div className="guild">
       <header>
         <h1>
-          Discord Wrapped of <span className="guild__name">{content.guild.name}</span> 2021
+            Discord Wrapped of <span className="guild__name whitespace-nowrap">{content.guild.name}</span> 2021
         </h1>
       </header>
 
