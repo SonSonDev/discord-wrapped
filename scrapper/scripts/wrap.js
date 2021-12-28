@@ -28,6 +28,8 @@ const messages = allMessages
         username: m.username,
         avatar: m.avatar ? `https://cdn.discordapp.com/avatars/${m.id}/${m.avatar}.png` : "https://cdn.discordapp.com/embed/avatars/0.png",
       })),
+      edited: !!m.edited_timestamp,
+      attachments: m.attachments.length,
       content: m.content,
     };
   });
