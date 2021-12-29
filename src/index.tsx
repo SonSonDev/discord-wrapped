@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import Wrapped from "./Wrapped";
 import reportWebVitals from "./reportWebVitals";
-import "./assets/style/index.scss";
 
 let Component = App;
 // https://blog.logrocket.com/multiple-entry-points-in-create-react-app-without-ejecting/

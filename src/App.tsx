@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
+import "./assets/app/style/index.scss";
 
 import No from "./pages/No";
 import Stats from "./pages/Stats";
