@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./assets/style/index.scss";
 
 let Component = App;
+// https://blog.logrocket.com/multiple-entry-points-in-create-react-app-without-ejecting/
 if (process.env.REACT_APP_TARGET === "wrapped") {
   Component = Wrapped;
 }
