@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Wrapped from "./Wrapped";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/style/index.scss";
 
+let Component = App;
+if (process.env.REACT_APP_TARGET === "wrapped") {
+  Component = Wrapped;
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Component />
   </React.StrictMode>,
   document.getElementById("root"),
 );

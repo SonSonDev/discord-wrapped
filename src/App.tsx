@@ -5,13 +5,13 @@ import {
 } from "react-router-dom";
 
 import No from "./pages/No";
-import Wrapped from "./pages/Wrapped";
+import Stats from "./pages/Stats";
 
 const App = () => {
   const routes = useRoutes([
     { path: "/", element: <No /> },
-    { path: "/:id", element: <div className="page"><Wrapped /></div> },
-    { path: "/:id/:section", element: <div className="page"><Wrapped /></div> },
+    { path: "/:id", element: <div className="page"><Stats /></div> },
+    { path: "/:id/:section", element: <div className="page"><Stats /></div> },
   ]);
   return routes;
 };
