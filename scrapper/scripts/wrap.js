@@ -46,5 +46,5 @@ output.users = wrapUsers(messages);
 output.channels = wrapChannels(messages);
 output.awards = wrapAwards(messages);
 
-fs.writeFileSync(`${__dirname}/../../src/content.json`, JSON.stringify(output));
+fs.writeFileSync(`${__dirname}/../../common/content.json`, JSON.stringify(output));
 fs.writeFileSync(`${__dirname}/../output/${guildFilename}-wrapped.json`, JSON.stringify(output));

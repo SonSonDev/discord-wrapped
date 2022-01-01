@@ -1,5 +1,10 @@
 module.exports = {
-  purge: [ "./src/**/*.{js,jsx,ts,tsx}", "./public/index.html" ],
+  purge: [
+    "./stats-app/src/**/*.{js,jsx,ts,tsx}",
+    "./stats-app/index.html",
+    "./wrapped/src/**/*.{js,jsx,ts,tsx}",
+    "./wrapped/index.html",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
