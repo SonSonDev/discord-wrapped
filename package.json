@@ -14,9 +14,9 @@
     "sass": "^1.45.2"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite serve stats-app",
     "dev:wrapped": "vite serve wrapped",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build stats-app",
     "build:wrapped": "tsc && vite build wrapped",
     "preview": "vite preview",
     "scrap-guilds": "node scrapper/scripts/scrap_guilds.js",

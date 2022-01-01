@@ -8,5 +8,4 @@ export default defineConfig({
     react(),
     eslintPlugin(),
   ],
-  root: "stats-app",
 });

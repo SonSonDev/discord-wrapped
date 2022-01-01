@@ -1,5 +1,5 @@
 import React from "react";
-import { IContent } from "../../../../../common/interfaces";
+import { IContent } from "../../../common/interfaces";
 
 interface IProps {
   content: IContent;
