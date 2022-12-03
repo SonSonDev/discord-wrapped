@@ -8,15 +8,15 @@ interface IProp {
 const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
   return (
     <section>
-      <h2>☆ Membres ☆</h2>
+      <h2>Membres</h2>
       {
         props.users.map(u => (
           <div key={u.username}
-               className="user" >
+               className="user">
             <div className="user__name">
               <img src={u.avatar}
                    alt={`avatar de ${u.username}`} />
-              <h3>--- {u.username} ---</h3><span className="count ml-2">{u.count}</span>
+              <h3>{u.username}</h3><span className="count ml-2">{u.count}</span>
             </div>
             <div className="categories">
               <div className="categories__item">
@@ -24,7 +24,7 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                 <ul>
                   {
                     u.words.length ? u.words.map(w => (
-                      <li key={u.username + w.text}>♦ {w.text} <span className="count">{w.count}</span></li>
+                      <li key={u.username + w.text}>{w.text} <span className="count">{w.count}</span></li>
                     )) : "-"
                   }
                 </ul>
@@ -35,7 +35,7 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                 <ul>
                   {
                     u.channels.map(c => (
-                      <li key={u.username + c.name}>♦ {c.name} <span className="count">{c.count}</span></li>
+                      <li key={u.username + c.name}>{c.name} <span className="count">{c.count}</span></li>
                     ))
                   }
                 </ul>
@@ -47,7 +47,7 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                   {
                     u.emojis.length ? u.emojis.map(e => (
                       <li key={u.username + e.text}
-                          className="emoji-list__item">♦
+                          className="emoji-list__item">
                         <div className="wrapper">
                           <img src={e.url} alt={e.text} />
                         </div>
@@ -64,7 +64,7 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                   {
                     u.mentions.length ? u.mentions.map(m => (
                       <li key={m.username}
-                          className="user-list__item">♦
+                          className="user-list__item">
                         <div className="wrapper">
                           <img src={m.avatar} alt={m.username} />
                         </div>

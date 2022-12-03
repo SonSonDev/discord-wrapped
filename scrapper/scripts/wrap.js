@@ -1,6 +1,6 @@
 const fs = require("fs");
 const moment = require("moment");
-const wrapAwards = require("./wrap/awards");
+const wrapRankings = require("./wrap/rankings");
 const wrapChannels = require("./wrap/channels");
 const wrapUsers = require("./wrap/users");
 
@@ -9,6 +9,7 @@ const discServIndex = process.argv[2];
 const guildListText = fs.readFileSync(`${__dirname}/../scrap/guilds.json`);
 const guildList = JSON.parse(guildListText);
 const guild = guildList[discServIndex];
+console.log(guildList);
 const guildFilename = guild.name.replace(/\s/g, "");
 
 const channels = JSON.parse(fs.readFileSync(`${__dirname}/../scrap/${guildFilename}-guild-channels.json`));
@@ -16,7 +17,7 @@ const allMessages = JSON.parse(fs.readFileSync(`${__dirname}/../scrap/${guildFil
 
 const messages = allMessages
   .filter(m => !m.author.bot)
-  .filter(m => moment(m.timestamp).year() === 2021)
+  .filter(m => moment(m.timestamp).year() === 2022)
   .map(m => {
     return {
       timestamp: m.timestamp,
@@ -44,7 +45,7 @@ output.guild = {
 
 output.users = wrapUsers(messages);
 output.channels = wrapChannels(messages);
-output.awards = wrapAwards(messages);
+output.rankings = wrapRankings(messages);
 
 fs.writeFileSync(`${__dirname}/../../common/content.json`, JSON.stringify(output));
 fs.writeFileSync(`${__dirname}/../output/${guildFilename}-wrapped.json`, JSON.stringify(output));

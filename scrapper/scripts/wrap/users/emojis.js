@@ -6,9 +6,9 @@ const fillEmojis = (emojisArray, message) => {
     .filter(e => e.match(regex.emoji));
 
   words.forEach(word => {
-    let index = emojisArray.findIndex(w => w.text === word);
+    const m = word.match(regex.emoji);
+    let index = emojisArray.findIndex(w => w.name === m[2]);
     if (index === -1) {
-      const m = word.match(regex.emoji);
       emojisArray.push({
         text: word,
         name: m[2],

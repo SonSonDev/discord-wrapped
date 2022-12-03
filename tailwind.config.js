@@ -15,6 +15,7 @@ module.exports = {
     },
     fontFamily: {
       "chihaya-jun": [ "chihaya-jun" ],
+      "rodin": [ "Rodin" ],
     },
     extend: {},
   },

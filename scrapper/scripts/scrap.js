@@ -55,7 +55,7 @@ const getGuildMessages = async (channels) => {
           return e;
         });
       const messages = response.data || [];
-      if (!messages.length || moment(_.last(messages).timestamp).year() !== 2021) {
+      if (!messages.length || moment(_.last(messages).timestamp).year() < 2022) {
         console.log(!messages.length || _.last(messages).timestamp);
         stop = true;
       } else {

@@ -1,5 +1,5 @@
 html {
-  @apply text-gray-700 font-chihaya-jun;
+  @apply text-gray-700 font-rodin;
   font-size: 24px;
 }
 
@@ -21,16 +21,4 @@ h3 {
 
 h4 {
   @apply text-lg
-}
-
-.app-container {
-  @apply container px-1 m-auto;
-
-  @screen sm {
-    @apply px-4;
-  }
-}
-
-.page {
-  @apply h-screen py-6 overflow-hidden;
 }

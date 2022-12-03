@@ -1,8 +1,8 @@
 import React from "react";
-import { IAward, IUser } from "../../../../common/interfaces";
+import { IRanking, IUser } from "../../../../common/interfaces";
 
 interface IProps {
-  awards: IAward[];
+  rankings: IRanking[];
 }
 
 const titles = {
@@ -15,14 +15,14 @@ const titles = {
   "spoilsNumber": "Nombre de spoils",
 };
 
-const Awards: React.FC<IProps> = (props: IProps): JSX.Element => {
+const Rankings: React.FC<IProps> = (props: IProps): JSX.Element => {
   titles["messagesNumber"];
   return (
     <section>
       <h2>☆ Classements ☆</h2>
       <div className="categories">
         {
-          props.awards.map((a: IAward) => (
+          props.rankings.map((a: IRanking) => (
             <div key={a.key}>
               <div className="categories__item">
                 <h4>--- <span>{ a.name }</span> ---</h4>
@@ -50,4 +50,4 @@ const Awards: React.FC<IProps> = (props: IProps): JSX.Element => {
   );
 };
 
-export default Awards;
+export default Rankings;

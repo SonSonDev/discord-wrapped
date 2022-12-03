@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getContent } from "../utils/axios";
 import { IContent } from "../../../common/interfaces";
-import Awards from "./wrap/awards";
+import Rankings from "./wrap/rankings";
 import ChannelsWrapped from "./wrap/channels";
 import UsersWrapped from "./wrap/users";
 
 enum Sections {
   users = "users",
   channels = "channels",
-  awards = "awards",
+  rankings = "rankings",
 }
 
 const Wrapped: React.FC = (): JSX.Element => {
@@ -38,8 +38,8 @@ const Wrapped: React.FC = (): JSX.Element => {
     element = <UsersWrapped users={content.users} />;
   } else if (section === Sections.channels) {
     element = <ChannelsWrapped channels={content.channels} />;
-  } else if (section === Sections.awards) {
-    element = <Awards awards={content.awards} />;
+  } else if (section === Sections.rankings) {
+    element = <Rankings rankings={content.rankings} />;
   } else if (section) {
     element = <Navigate replace to={`/${id}`} />;
   }
@@ -59,7 +59,7 @@ const Wrapped: React.FC = (): JSX.Element => {
         <span className="mx-2">/</span>
         <Link to={`/${id}/${Sections.channels}`}>Salons</Link>
         <span className="mx-2">/</span>
-        <Link to={`/${id}/${Sections.awards}`}>Classements</Link>
+        <Link to={`/${id}/${Sections.rankings}`}>Classements</Link>
       </nav>
 
       { element }
