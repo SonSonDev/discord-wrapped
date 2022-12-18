@@ -1,5 +1,5 @@
-.guild {
-  @apply whitespace-nowrap bg-white h-full py-2 px-2 overflow-y-auto overflow-x-hidden rounded-md lg:px-4;
+.content {
+  @apply whitespace-nowrap bg-white flex h-screen overflow-auto;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -21,6 +21,29 @@
 
   &__name {
     @apply bg-gray-700 text-white rounded-sm px-1;
+  }
+
+  .page {
+    @apply overflow-auto py-8 px-4;
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(75 85 99 / var(--tw-bg-opacity));
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+  }
   }
 }
 
@@ -55,7 +78,7 @@ ul {
 }
 
 .emoji-list, .user-list {
-  @apply flex flex-wrap max-w-sm;
+  @apply flex flex-wrap;
 
   &__item {
     @apply flex items-center my-1 pr-4 w-full sm:w-1/2;
@@ -71,14 +94,5 @@ ul {
     .name {
       @apply mr-2;
     }
-  }
-}
-
-
-.user-list {
-  @apply max-w-sm;
-
-  &__item {
-    @apply sm:w-full md:w-1/2;
   }
 }

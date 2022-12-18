@@ -3,13 +3,13 @@ const fillMentions = require("../users/mentions");
 const { messagesNumber, emojisNumber, linksNumber, picturesNumber, editsNumber, spoilsNumber } = require("./users");
 
 const rankingsList = [
-  [ "messagesNumber", "Nombres de messages", messagesNumber ],
-  [ "emojisNumber", "Nombres de emojis", emojisNumber ],
-  [ "linksNumber", "Nombres de liens partagés", linksNumber ],
-  [ "picturesNumber", "Nombres d'images envoyées", picturesNumber ],
-  [ "editsNumber", "Nombres de messages modifiés", editsNumber ],
-  [ "spoilsNumber", "Nombres de spoils", spoilsNumber ],
-  [ "mentionsNumber", "Nombres de fois mentionné", fillMentions ],
+  [ "messagesNumber", "Messages", messagesNumber ],
+  [ "emojisNumber", "Emojis", emojisNumber ],
+  [ "linksNumber", "Liens partagés", linksNumber ],
+  [ "picturesNumber", "Images envoyées", picturesNumber ],
+  [ "editsNumber", "Messages modifiés", editsNumber ],
+  [ "spoilsNumber", "Spoils", spoilsNumber ],
+  [ "mentionsNumber", "Mentions", fillMentions ],
 ];
 
 const wrapRankings = (messages) => {
@@ -28,7 +28,7 @@ const wrapRankings = (messages) => {
     return acc;
   }, rankings);
   rankings.map((a) => {
-    a.users = getTop(sort(a.users, "count"), 5);
+    a.users = getTop(sort(a.users, "count"), 10);
   });
 
   return rankings;

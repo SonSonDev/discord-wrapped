@@ -12,6 +12,7 @@ const App = () => {
     { path: "/", element: <No /> },
     { path: "/:id", element: <div className="page"><Stats /></div> },
     { path: "/:id/:section", element: <div className="page"><Stats /></div> },
+    { path: "/:id/:section/:index", element: <div className="page"><Stats /></div> },
   ]);
   return routes;
 };

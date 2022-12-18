@@ -40,6 +40,7 @@ export interface IContent {
   guild: {
     name: string;
   }
+  year: number;
   users: IUserWrapped[];
   channels: IChannelWrapped[];
   rankings: IRanking[];

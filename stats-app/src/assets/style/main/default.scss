@@ -1,24 +1,25 @@
 html {
   @apply text-gray-700 font-rodin;
   font-size: 24px;
+  user-select: none;
 }
 
 body {
-  @apply bg-gray-800;
+  @apply bg-white;
 }
 
 h1 {
-  @apply text-3xl
+  @apply text-3xl;
 }
 
 h2 {
-  @apply text-2xl
+  @apply text-2xl;
 }
 
 h3 {
-  @apply text-xl ml-2
+  @apply text-xl ml-2;
 }
 
 h4 {
-  @apply text-lg
+  @apply text-lg;
 }

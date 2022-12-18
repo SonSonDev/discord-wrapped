@@ -1,11 +1,11 @@
 module.exports = {
-  purge: [
+  content: [
     "./stats-app/src/**/*.{js,jsx,ts,tsx}",
     "./stats-app/index.html",
     "./wrapped/src/**/*.{js,jsx,ts,tsx}",
     "./wrapped/index.html",
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     screens: {
       "xs": "480px",
