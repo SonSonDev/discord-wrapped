@@ -85,16 +85,16 @@ const Wrapped: React.FC = (): JSX.Element => {
           </h1>
         </header>
 
-        <nav className="mb-4">
-          <Link className={section === Sections.users ? "bg-gray-600 text-white p-1 rounded-sm" : "p-1"}
+        <nav className="nav">
+          <Link className={section === Sections.users ? "active" : ""}
                 to={`/${id}/${Sections.users}`}>Membres
           </Link>
           <span className="mx-2">/</span>
-          <Link className={section === Sections.channels ? "bg-gray-600 text-white p-1 rounded-sm" : "p-1"}
+          <Link className={section === Sections.channels ? "active" : ""}
                 to={`/${id}/${Sections.channels}`}>Salons
           </Link>
           <span className="mx-2">/</span>
-          <Link className={section === Sections.rankings ? "bg-gray-600 text-white p-1 rounded-sm" : "p-1"}
+          <Link className={section === Sections.rankings ? "active" : ""}
                 to={`/${id}/${Sections.rankings}`}>Classements
           </Link>
         </nav>

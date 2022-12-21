@@ -5,7 +5,7 @@ module.exports = {
     "./wrapped/src/**/*.{js,jsx,ts,tsx}",
     "./wrapped/index.html",
   ],
-  darkMode: "class", // or 'media' or 'class'
+  darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
       "xs": "480px",
@@ -17,7 +17,13 @@ module.exports = {
       "chihaya-jun": [ "chihaya-jun" ],
       "rodin": [ "Rodin" ],
     },
-    extend: {},
+    extend: {
+      colors: {
+        "dark": "#514E3F",
+        "yellow-1": "#B4AF9B",
+        "yellow-2": "#CBC6B0",
+      },
+    },
   },
   variants: {
     extend: {},

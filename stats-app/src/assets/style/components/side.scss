@@ -15,7 +15,7 @@
       @apply mb-2;
 
       a {
-        @apply block p-2 border-gray-600 border-2 w-40 whitespace-nowrap;
+        @apply block p-2 border-dark border-2 w-40 whitespace-nowrap;
 
         white-space: nowrap;
         overflow: hidden;
@@ -23,7 +23,7 @@
       
 
         &.active {
-          @apply bg-gray-600 text-white;
+          @apply bg-dark text-yellow-2;
         }
       }
     }
