@@ -4,6 +4,7 @@ const moment = require("moment");
 const wrapRankings = require("./wrap/rankings");
 const wrapChannels = require("./wrap/channels");
 const wrapUsers = require("./wrap/users");
+const wrapMonths = require("./wrap/months");
 
 const guildListText = fs.readFileSync(`${__dirname}/../scrap/guilds.json`);
 
@@ -60,6 +61,7 @@ const guildListText = fs.readFileSync(`${__dirname}/../scrap/guilds.json`);
   output.users = wrapUsers(messages);
   output.channels = wrapChannels(messages);
   output.rankings = wrapRankings(messages);
+  output.months = wrapMonths(messages);
 
   fs.writeFileSync(`${__dirname}/../../common/content.json`, JSON.stringify(output));
   fs.writeFileSync(`${__dirname}/../output/${guild.id}-wrapped.json`, JSON.stringify(output));

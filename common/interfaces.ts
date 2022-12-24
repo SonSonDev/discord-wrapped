@@ -19,11 +19,38 @@ export interface IEmoji extends IWord {
   name: string;
 }
 
+export interface IHour {
+  hour: number;
+  count: number;
+}
+
+export interface IDay {
+  day: number;
+  name: string;
+  count: number;
+}
+
+export interface IMonth {
+  month: number;
+  name: string;
+  count: number;
+}
+
+export interface IDate {
+  date: number;
+  formatted: string;
+  count: number;
+}
+
 export interface IUserWrapped extends IUser {
   words: IWord[]
   channels: IChannel[]
   emojis: IEmoji[]
   mentions: IUser[]
+  hours: IHour[];
+  days: IDay[];
+  months: IMonth[];
+  dates: IDate[];
 }
 
 export interface IChannelWrapped extends IChannel {
@@ -36,6 +63,13 @@ export interface IRanking {
   name: string;
   users: IUser[];
 }
+
+
+export interface IMonthWrapped extends IMonth {
+  users: IUser[];
+  channels: IChannel[];
+}
+
 export interface IContent {
   guild: {
     name: string;
@@ -44,4 +78,5 @@ export interface IContent {
   users: IUserWrapped[];
   channels: IChannelWrapped[];
   rankings: IRanking[];
+  months: IMonthWrapped[];
 }

@@ -10,8 +10,8 @@ exports.getWords = function (string) {
     .filter(e => e.length > 5);
 };
 
-exports.sort = function (array, type) {
-  return array.sort((a, b) => b[type] - a[type]);
+exports.sort = function (array, type, order = 1) {
+  return array.sort((a, b) => (b[type] - a[type]) * order);
 };
 
 exports.getTop = function (array, n = 10) {
