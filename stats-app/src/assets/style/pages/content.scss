@@ -58,8 +58,9 @@
 }
 
 .categories {
-  @apply flex flex-wrap;
-
+  h4 {
+    font-size: 32px;
+  }
   &__item {
     @apply mb-6 ml-4 mr-16;
   }
@@ -78,7 +79,7 @@ ul {
     @apply flex items-center my-1 pr-4 w-full sm:w-1/2;
 
     .wrapper {
-      @apply h-6 w-6 overflow-hidden rounded-sm mx-2 flex flex-shrink-0;
+      @apply h-6 w-6 overflow-hidden rounded-sm mx-1 flex flex-shrink-0;
 
       img {
         @apply max-h-full max-w-full m-auto flex-shrink-0;

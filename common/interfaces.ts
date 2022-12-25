@@ -56,6 +56,7 @@ export interface IUserWrapped extends IUser {
 export interface IChannelWrapped extends IChannel {
   users: IUser[]
   emojis: IEmoji[]
+  months: IMonth[]
 }
 
 export interface IRanking {

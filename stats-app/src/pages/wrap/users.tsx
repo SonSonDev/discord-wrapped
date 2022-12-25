@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { IUserWrapped } from "../../../../common/interfaces";
+import BarChart from "../../components/BarChart";
 
 interface IProp {
   users: IUserWrapped[]
@@ -75,6 +76,24 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                   )) : "-"
                 }
               </ul>
+            </div>
+
+            <div className="categories__item">
+              <h4>Activité moyenne par heure:</h4>
+              <BarChart style={{ width: "100%" }}
+                        key={"days-chart" + u.username} data={u.hours.map(h => ({ name: h.hour.toString(), count:h.count }))} xGap={-1}/>
+            </div>
+
+            <div className="categories__item">
+              <h4>Activité moyenne par jour:</h4>
+              <BarChart style={{ width: "100%" }}
+                        key={"days-chart" + u.username} data={u.days}/>
+            </div>
+
+            <div className="categories__item">
+              <h4>Activité par mois:</h4>
+              <BarChart style={{ width: "100%" }}
+                        key={"month-chart" + u.username} data={u.months}/>
             </div>
           </div>
         </div>

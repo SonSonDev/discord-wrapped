@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { IChannelWrapped } from "../../../../common/interfaces";
+import BarChart from "../../components/BarChart";
 
 interface IProps {
   channels: IChannelWrapped[];
@@ -55,6 +56,11 @@ const ChannelsWrapped: React.FC<IProps> = (props: IProps): JSX.Element => {
               </ul>
             </div>
 
+            <div className="categories__item">
+              <h4>Activité par mois:</h4>
+              <BarChart style={{ width: "100%" }}
+                        key={"month-chart" + c.name} data={c.months}/>
+            </div>
           </div>
         </div>
       }

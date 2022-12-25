@@ -1,24 +1,23 @@
 const moment = require("moment/moment");
 
 const fillHours = (hoursArray, message) => {
+  if (!hoursArray.length) {
+    hoursArray = (new Array(24)).fill(1).map((_, i) => ({
+      hour: i,
+      count: 0,
+    }));
+  }
   const hour = moment(message.timestamp).hour();
 
   let index = hoursArray.findIndex(c => c.hour === hour);
-  if (index === -1) {
-    hoursArray.push({
-      hour,
-      count: 0,
-    });
-    index = hoursArray.length - 1;
-  }
-  hoursArray[index].count += 1;
+  hoursArray[index].count += 24 / 365;
 
   return hoursArray;
 };
 
 const fillDays = (daysArray, message) => {
   const day = moment(message.timestamp).isoWeekday();
-  const dayName = moment(message.timestamp).format("dddd");
+  const dayName = moment(message.timestamp).format("ddd");
 
   let index = daysArray.findIndex(c => c.day === day);
   if (index === -1) {
@@ -29,24 +28,22 @@ const fillDays = (daysArray, message) => {
     });
     index = daysArray.length - 1;
   }
-  daysArray[index].count += 1;
+  daysArray[index].count += 7 / 365;
 
   return daysArray;
 };
 
 const fillMonths = (monthArray, message) => {
+  if (!monthArray.length) {
+    monthArray = (new Array(12)).fill(1).map((_, i) => ({
+      month: i,
+      name: moment(i + 1, "M").format("MMM"),
+      count: 0,
+    }));
+  }
   const month = moment(message.timestamp).month();
-  const monthName = moment(message.timestamp).format("MMMM");
 
   let index = monthArray.findIndex(c => c.month === month);
-  if (index === -1) {
-    monthArray.push({
-      month,
-      name: monthName,
-      count: 0,
-    });
-    index = monthArray.length - 1;
-  }
   monthArray[index].count += 1;
 
   return monthArray;

@@ -10,7 +10,7 @@ const wrapMonths = (messages) => {
     let index = acc.findIndex(m => m.month === month);
     if (index === -1) {
       acc.push({
-        month, name: moment(cur.timestamp).format("MMMM"),
+        month, name: moment(cur.timestamp).format("MMM"),
         count: 0,
         users: [],
         channels: [],

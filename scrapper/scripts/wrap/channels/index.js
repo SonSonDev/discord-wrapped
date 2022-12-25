@@ -1,6 +1,7 @@
 const { sort, getTop } = require("../../utils");
 const fillEmojis = require("./emojis");
 const fillUsers = require("./users");
+const { fillMonths } = require("../users/time");
 
 const wrapChannels = (messages) => {
   let channels = messages.reduce((acc, cur) => {
@@ -11,6 +12,7 @@ const wrapChannels = (messages) => {
         count: 0,
         users: [],
         emojis: [],
+        months: [],
       });
       index = acc.length - 1;
     }
@@ -18,6 +20,7 @@ const wrapChannels = (messages) => {
     acc[index].count += 1;
     acc[index].users = fillUsers(acc[index].users, cur);
     acc[index].emojis = fillEmojis(acc[index].emojis, cur);
+    acc[index].months = fillMonths(acc[index].months, cur);
     return acc;
   }, []);
 
@@ -25,6 +28,7 @@ const wrapChannels = (messages) => {
     c.name = `#-${c.name}`;
     c.users = getTop(sort(c.users, "count"), 20);
     c.emojis = getTop(sort(c.emojis, "count"), 20);
+    c.months = sort(c.months, "month", -1);
     return c;
   });
 
