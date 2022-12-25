@@ -1,8 +1,12 @@
 {
   "guild": {
-    "name": ""
+    "id": "",
+    "name": "",
+    "icon": ""
   },
+  "year": 0,
   "users": [],
   "channels": [],
-  "awards": []
+  "rankings": [],
+  "months": []
 }
