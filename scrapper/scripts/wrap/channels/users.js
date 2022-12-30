@@ -13,4 +13,4 @@ const fillUsers = (usersArray, message) => {
   return usersArray;
 };
 
-module.exports = fillUsers;
+export default fillUsers;

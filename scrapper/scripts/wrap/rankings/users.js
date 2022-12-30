@@ -1,6 +1,6 @@
-const { regex } = require("../../utils");
+import { regex } from "../../utils/index.js";
 
-exports.messagesNumber = (usersArray, message) => {
+export const messagesNumber = (usersArray, message) => {
   let index = usersArray.findIndex(u => u.username === message.author);
   if (index === -1) {
     usersArray.push({
@@ -15,7 +15,7 @@ exports.messagesNumber = (usersArray, message) => {
   return usersArray;
 };
 
-exports.emojisNumber = (usersArray, message) => {
+export const emojisNumber = (usersArray, message) => {
   const m = message.content.match(regex.emojiG);
   if (!m) return usersArray;
 
@@ -33,7 +33,7 @@ exports.emojisNumber = (usersArray, message) => {
   return usersArray;
 };
 
-exports.linksNumber = (usersArray, message) => {
+export const linksNumber = (usersArray, message) => {
   const m = message.content.match(regex.urlG);
   if (!m) return usersArray;
 
@@ -51,7 +51,7 @@ exports.linksNumber = (usersArray, message) => {
   return usersArray;
 };
 
-exports.picturesNumber = (usersArray, message) => {
+export const picturesNumber = (usersArray, message) => {
   if (!message.attachments) return usersArray;
 
   let index = usersArray.findIndex(u => u.username === message.author);
@@ -68,7 +68,7 @@ exports.picturesNumber = (usersArray, message) => {
   return usersArray;
 };
 
-exports.editsNumber = (usersArray, message) => {
+export const editsNumber = (usersArray, message) => {
   if (!message.edited) return usersArray;
 
   let index = usersArray.findIndex(u => u.username === message.author);
@@ -85,7 +85,7 @@ exports.editsNumber = (usersArray, message) => {
   return usersArray;
 };
 
-exports.mentionsNumber = (usersArray, message) => {
+export const mentionsNumber = (usersArray, message) => {
   let index = usersArray.findIndex(u => u.username === message.author);
   if (index === -1) {
     usersArray.push({
@@ -99,7 +99,7 @@ exports.mentionsNumber = (usersArray, message) => {
   return usersArray;
 };
 
-exports.spoilsNumber = (usersArray, message) => {
+export const spoilsNumber = (usersArray, message) => {
   const m = message.content.match(regex.spoiler);
   if (!m) return usersArray;
 

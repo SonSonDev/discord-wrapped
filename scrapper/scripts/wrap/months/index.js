@@ -1,7 +1,7 @@
-const { sort, getTop } = require("../../utils");
-const moment = require("moment");
-const fillUsers = require("../channels/users");
-const fillChannels = require("../users/channels");
+import moment from "moment";
+import { sort, getTop } from "../../utils/index.js";
+import fillUsers from "../channels/users.js";
+import fillChannels from "../users/channels.js";
 
 const wrapMonths = (messages) => {
   let months = messages.reduce((acc, cur) => {
@@ -36,4 +36,4 @@ const wrapMonths = (messages) => {
   return months;
 };
 
-module.exports = wrapMonths;
+export default wrapMonths;

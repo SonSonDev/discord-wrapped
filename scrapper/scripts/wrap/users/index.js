@@ -1,9 +1,9 @@
-const { sort, getTop } = require("../../utils");
-const fillChannels = require("./channels");
-const fillEmojis = require("./emojis");
-const fillMentions = require("./mentions");
-const fillWords = require("./words");
-const { fillDays, fillHours, fillMonths, fillDates } = require("./time");
+import { sort, getTop } from "../../utils/index.js";
+import fillChannels from "./channels.js";
+import fillEmojis from "./emojis.js";
+import fillMentions from "./mentions.js";
+import fillWords from "./words.js";
+import { fillDays, fillHours, fillMonths, fillDates } from "./time.js";
 
 const wrapUsers = (messages) => {
   let users = messages.reduce((acc, cur) => {
@@ -55,4 +55,4 @@ const wrapUsers = (messages) => {
   return users;
 };
 
-module.exports = wrapUsers;
+export default wrapUsers;

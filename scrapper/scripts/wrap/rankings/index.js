@@ -1,15 +1,15 @@
-const { sort, getTop } = require("../../utils");
-const fillMentions = require("../users/mentions");
-const { messagesNumber, emojisNumber, linksNumber, picturesNumber, editsNumber, spoilsNumber } = require("./users");
+import { sort, getTop } from "../../utils/index.js";
+import fillMentions from "../users/mentions.js";
+import { messagesNumber, emojisNumber, linksNumber, picturesNumber, editsNumber, spoilsNumber } from "./users.js";
 
 const rankingsList = [
-  [ "messagesNumber", "Messages", messagesNumber ],
-  [ "emojisNumber", "Emojis", emojisNumber ],
-  [ "linksNumber", "Liens partagés", linksNumber ],
-  [ "picturesNumber", "Images envoyées", picturesNumber ],
-  [ "editsNumber", "Messages modifiés", editsNumber ],
-  [ "spoilsNumber", "Spoils", spoilsNumber ],
-  [ "mentionsNumber", "Mentions", fillMentions ],
+  ["messagesNumber", "Messages", messagesNumber],
+  ["emojisNumber", "Emojis", emojisNumber],
+  ["linksNumber", "Liens partagés", linksNumber],
+  ["picturesNumber", "Images envoyées", picturesNumber],
+  ["editsNumber", "Messages modifiés", editsNumber],
+  ["spoilsNumber", "Spoils", spoilsNumber],
+  ["mentionsNumber", "Mentions", fillMentions],
 ];
 
 const wrapRankings = (messages) => {
@@ -34,4 +34,4 @@ const wrapRankings = (messages) => {
   return rankings;
 };
 
-module.exports = wrapRankings;
+export default wrapRankings;

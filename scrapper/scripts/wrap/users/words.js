@@ -1,4 +1,4 @@
-const { getWords } = require("../../utils");
+import { getWords } from "../../utils/index.js";
 
 const fillWords = (wordsArray, message) => {
   const words = getWords(message.content)
@@ -19,4 +19,4 @@ const fillWords = (wordsArray, message) => {
   return wordsArray;
 };
 
-module.exports = fillWords;
+export default fillWords;

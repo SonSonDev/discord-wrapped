@@ -1,7 +1,7 @@
-const { sort, getTop } = require("../../utils");
-const fillEmojis = require("./emojis");
-const fillUsers = require("./users");
-const { fillMonths } = require("../users/time");
+import { sort, getTop } from "../../utils/index.js";
+import fillEmojis from "./emojis.js";
+import fillUsers from "./users.js";
+import { fillMonths } from "../users/time.js";
 
 const wrapChannels = (messages) => {
   let channels = messages.reduce((acc, cur) => {
@@ -36,4 +36,4 @@ const wrapChannels = (messages) => {
   return channels;
 };
 
-module.exports = wrapChannels;
+export default wrapChannels;

@@ -17,4 +17,4 @@ const fillMentions = (mentionsArray, message) => {
   return mentionsArray;
 };
 
-module.exports = fillMentions;
+export default fillMentions;

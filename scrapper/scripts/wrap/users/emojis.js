@@ -1,4 +1,4 @@
-const { getWords, regex } = require("../../utils");
+import { getWords, regex } from "../../utils/index.js";
 
 
 const fillEmojis = (emojisArray, message) => {
@@ -23,4 +23,4 @@ const fillEmojis = (emojisArray, message) => {
   return emojisArray;
 };
 
-module.exports = fillEmojis;
+export default fillEmojis;

@@ -1,6 +1,6 @@
-const moment = require("moment/moment");
+import moment from "moment";
 
-const fillHours = (hoursArray, message) => {
+export const fillHours = (hoursArray, message) => {
   if (!hoursArray.length) {
     hoursArray = (new Array(24)).fill(1).map((_, i) => ({
       hour: i,
@@ -15,7 +15,7 @@ const fillHours = (hoursArray, message) => {
   return hoursArray;
 };
 
-const fillDays = (daysArray, message) => {
+export const fillDays = (daysArray, message) => {
   const day = moment(message.timestamp).isoWeekday();
   const dayName = moment(message.timestamp).format("ddd");
 
@@ -33,7 +33,7 @@ const fillDays = (daysArray, message) => {
   return daysArray;
 };
 
-const fillMonths = (monthArray, message) => {
+export const fillMonths = (monthArray, message) => {
   if (!monthArray.length) {
     monthArray = (new Array(12)).fill(1).map((_, i) => ({
       month: i,
@@ -49,7 +49,7 @@ const fillMonths = (monthArray, message) => {
   return monthArray;
 };
 
-const fillDates = (datesArray, message) => {
+export const fillDates = (datesArray, message) => {
   const date = moment(message.timestamp).startOf("day").unix();
   const formatted = moment(message.timestamp).startOf("day").format("DD/MM");
 
@@ -65,5 +65,3 @@ const fillDates = (datesArray, message) => {
 
   return datesArray;
 };
-
-module.exports = { fillDays, fillHours, fillMonths, fillDates };

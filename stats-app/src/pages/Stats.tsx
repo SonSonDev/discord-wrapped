@@ -99,7 +99,7 @@ const Wrapped: React.FC = (): JSX.Element => {
           </Link>
         </nav>
 
-        { element }
+        {element}
       </div>
     </div>
   );

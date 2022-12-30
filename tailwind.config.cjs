@@ -14,8 +14,8 @@ module.exports = {
       "lg": "1024px",
     },
     fontFamily: {
-      "chihaya-jun": [ "chihaya-jun" ],
-      "rodin": [ "Rodin" ],
+      "chihaya-jun": ["chihaya-jun"],
+      "rodin": ["Rodin"],
     },
     extend: {
       colors: {

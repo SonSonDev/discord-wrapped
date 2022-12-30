@@ -1,8 +1,8 @@
-exports.timeout = function (ms) {
+export const timeout = function (ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-exports.getWords = function (string) {
+export const getWords = function (string) {
   return string
     .toLowerCase()
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -10,15 +10,15 @@ exports.getWords = function (string) {
     .filter(e => e.length > 5);
 };
 
-exports.sort = function (array, type, order = 1) {
+export const sort = function (array, type, order = 1) {
   return array.sort((a, b) => (b[type] - a[type]) * order);
 };
 
-exports.getTop = function (array, n = 10) {
+export const getTop = function (array, n = 10) {
   return array.slice(0, n);
 };
 
-exports.regex = {
+export const regex = {
   emoji: /<(a?):([^<>]+):([0-9]+)>/,
   emojiG: /<(a?):([^<>]+):([0-9]+)>/g,
   url: /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/,

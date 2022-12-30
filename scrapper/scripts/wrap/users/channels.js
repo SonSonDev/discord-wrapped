@@ -12,4 +12,4 @@ const fillChannels = (channelsArray, message) => {
   return channelsArray;
 };
 
-module.exports = fillChannels;
+export default fillChannels;
