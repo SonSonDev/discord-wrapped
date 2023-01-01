@@ -9,37 +9,46 @@ import wrapMonths from "./wrap/months/index.js";
 import path from "path";
 const __dirname = path.resolve();
 
-const guildListText = fs.readFileSync(`${__dirname}/scrapper/output/guilds.json`);
+const guildsData = JSON.parse(fs.readFileSync(`${__dirname}/scrapper/output/guilds.json`).toString());
 const contentDirectory = guildId => `${__dirname}/scrapper/output/${guildId}`;
-const outputDirectory = `${__dirname}/scrapper/output/wrap`;
+const outputDirectory = `${__dirname}/scrapper/output`;
+
+const getAvailableGuilds = () => {
+  const files = fs.readdirSync(outputDirectory);
+  return guildsData.filter(g => files.includes(g.id));
+};
+
+const getAvailableYears = (id) => {
+  const regex = /guild-messages-([0-9]+)\.json/;
+  return fs.readdirSync(`${outputDirectory}/${id}`)
+    .filter(f => f.match(regex))
+    .map(f => parseInt(f.match(regex)[1]));
+};
 
 (async () => {
-  const guildList = JSON.parse(guildListText);
-  const { guildId, year } = await inquirer
+  const { guildId } = await inquirer
     .prompt([
       {
         name: "guildId", type: "list", message: "What guild?",
-        choices: guildList.map(g => ({
+        choices: getAvailableGuilds().map(g => ({
           value: g.id,
           name: g.name,
         })),
       },
+    ]);
+  const { year } = await inquirer
+    .prompt([
       {
-        name: "year", type: "number", message: "What year?",
-        validate: function (input) {
-          const year = Number(input);
-          const done = this.async();
-          if (!Number.isInteger(year) || year > moment().year() || year < 2012) {
-            done("Give valid year");
-            return false;
-          }
-          done(null, true);
-        },
+        name: "year", type: "list", message: "What year?",
+        choices: getAvailableYears(guildId).map(v => ({
+          value: v,
+          name: v.toString(),
+        })),
       },
     ]);
 
-  if (!fs.existsSync(outputDirectory)) {
-    fs.mkdirSync(outputDirectory);
+  if (!fs.existsSync(outputDirectory + "/wrap")) {
+    fs.mkdirSync(outputDirectory + "/wrap");
   }
   const channels = JSON.parse(fs.readFileSync(`${contentDirectory(guildId)}/guild-channels.json`));
   const allMessages = JSON.parse(fs.readFileSync(`${contentDirectory(guildId)}/guild-messages-${year}.json`));
@@ -66,7 +75,7 @@ const outputDirectory = `${__dirname}/scrapper/output/wrap`;
 
   const output = {};
 
-  const guild = guildList.find(g => g.id === guildId);
+  const guild = guildsData.find(g => g.id === guildId);
   output.guild = {
     id: guild,
     name: guild.name,
@@ -80,5 +89,5 @@ const outputDirectory = `${__dirname}/scrapper/output/wrap`;
   output.months = wrapMonths(messages);
 
   fs.writeFileSync(`${__dirname}/common/content.json`, JSON.stringify(output));
-  fs.writeFileSync(`${outputDirectory}/${guild.id}-wrapped-${year}.json`, JSON.stringify(output));
+  fs.writeFileSync(`${outputDirectory}/wrap/${guild.id}-wrapped-${year}.json`, JSON.stringify(output));
 })();
