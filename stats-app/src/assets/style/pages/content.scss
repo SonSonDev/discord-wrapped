@@ -1,6 +1,5 @@
 .content {
-  @apply whitespace-nowrap bg-yellow-2 flex h-screen overflow-auto;
-  background-image: url('../img/background_pattern.svg');
+  @apply whitespace-nowrap bg-yellow-1 flex h-screen overflow-auto;
   background-repeat: repeat;
 
   header {

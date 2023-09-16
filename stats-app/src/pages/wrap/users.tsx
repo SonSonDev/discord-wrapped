@@ -1,7 +1,8 @@
-import React from "react";
+import React, { EventHandler, ReactEventHandler } from "react";
 import { useParams } from "react-router-dom";
 import { IUserWrapped } from "../../../../common/interfaces";
 import BarChart from "../../components/BarChart";
+import onAvatarError from "../../utils/utils";
 
 interface IProp {
   users: IUserWrapped[]
@@ -17,6 +18,7 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
         <div className="user">
           <div className="user__name">
             <img src={u.avatar}
+                 onError={onAvatarError}
                  alt={`avatar de ${u.username}`} />
             <h3>{u.username}</h3><span className="count ml-2">{u.count}</span>
           </div>
@@ -51,7 +53,9 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                     <li key={u.username + e.text}
                         className="emoji-list__item">
                       <div className="wrapper">
-                        <img src={e.url} alt={e.text} />
+                        <img src={e.url}
+                             onError={onAvatarError}
+                             alt={e.text} />
                       </div>
                       <span className="count">{e.count}</span>
                     </li>
@@ -68,7 +72,9 @@ const UsersWrapped: React.FC<IProp> = (props: IProp): JSX.Element => {
                     <li key={m.username}
                         className="user-list__item">
                       <div className="wrapper">
-                        <img src={m.avatar} alt={m.username} />
+                        <img src={m.avatar}
+                             onError={onAvatarError}
+                             alt={m.username} />
                       </div>
                       <span className="name">@{m.username}</span>
                       <span className="count">{m.count}</span>

@@ -6,6 +6,7 @@ import {
 
 import No from "./pages/No";
 import Stats from "./pages/Stats";
+import BackgroundCanvas from "./components/BackgroundCanvas";
 
 const App = () => {
   const routes = useRoutes([
@@ -20,6 +21,7 @@ const App = () => {
 const AppWrapper: React.FC = (): JSX.Element => {
   return (
     <div className="app-container">
+      <BackgroundCanvas />
       <Router>
         <App />
       </Router>

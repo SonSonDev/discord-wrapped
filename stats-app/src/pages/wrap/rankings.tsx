@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { IRanking, IUser } from "../../../../common/interfaces";
+import onAvatarError from "../../utils/utils";
 
 interface IProps {
   rankings: IRanking[];
@@ -25,7 +26,9 @@ const Rankings: React.FC<IProps> = (props: IProps): JSX.Element => {
                     <li key={u.username}
                         className="user-list__item">♦
                       <div className="wrapper">
-                        <img src={u.avatar} alt={u.username} />
+                        <img src={u.avatar}
+                             onError={onAvatarError}
+                             alt={u.username} />
                       </div>
                       <span className="name">@{u.username}</span>
                       <span className="count">{u.count}</span>

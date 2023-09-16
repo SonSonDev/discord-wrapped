@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { IChannelWrapped } from "../../../../common/interfaces";
 import BarChart from "../../components/BarChart";
+import onAvatarError from "../../utils/utils";
 
 interface IProps {
   channels: IChannelWrapped[];
@@ -29,7 +30,9 @@ const ChannelsWrapped: React.FC<IProps> = (props: IProps): JSX.Element => {
                     <li key={u.username}
                         className="user-list__item">♦
                       <div className="wrapper">
-                        <img src={u.avatar} alt={u.username} />
+                        <img src={u.avatar}
+                             onError={onAvatarError}
+                             alt={u.username} />
                       </div>
                       <span className="name">@{u.username}</span>
                       <span className="count">{u.count}</span>
@@ -47,7 +50,9 @@ const ChannelsWrapped: React.FC<IProps> = (props: IProps): JSX.Element => {
                     <li key={c.name + e.text}
                         className="emoji-list__item">♦
                       <div className="wrapper">
-                        <img src={e.url} alt={e.text} />
+                        <img src={e.url}
+                             onError={onAvatarError}
+                             alt={e.text} />
                       </div>
                       <span className="count">{e.count}</span>
                     </li>
