@@ -15,7 +15,6 @@ const getContent = async (id: string | undefined): Promise<IContent> => {
   if (!file?.raw_url) {
     return {};
   }
-  await instance.get(`/${import.meta.env.VITE_GIST_ID}/${id}.json`);
   const { data } = (await instance.get(file.raw_url));
   return data || {};
 };
