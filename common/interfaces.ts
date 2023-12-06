@@ -72,12 +72,12 @@ export interface IMonthWrapped extends IMonth {
 }
 
 export interface IContent {
-  guild: {
+  guild?: {
     name: string;
   }
-  year: number;
-  users: IUserWrapped[];
-  channels: IChannelWrapped[];
-  rankings: IRanking[];
-  months: IMonthWrapped[];
+  year?: number;
+  users?: IUserWrapped[];
+  channels?: IChannelWrapped[];
+  rankings?: IRanking[];
+  months?: IMonthWrapped[];
 }

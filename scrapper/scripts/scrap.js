@@ -10,7 +10,8 @@ import path from "path";
 const __dirname = path.resolve();
 
 const base_url = "https://discord.com/api/v8",
-  bot_token = process.env.BOT_TOKEN;
+  bot_token = process.env.BOT_TOKEN,
+  user_token = process.env.USER_TOKEN;
 
 const getGuildsListUrl = "/users/@me/guilds",
   getGuildUrl = (guildId) => `/guilds/${guildId}`,
@@ -21,9 +22,8 @@ const getGuildsListUrl = "/users/@me/guilds",
 const instance = axios.create({
   baseURL: base_url,
   timeout: 20000,
-  headers: { "Authorization": `Bot ${bot_token}` },
+  headers: { "Authorization": process.argv[2] === "--user" ? user_token : `Bot ${bot_token}` },
 });
-
 
 /** Create scrapping output directory */
 const createOutputDirectory = (guildId) => {
