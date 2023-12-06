@@ -13,10 +13,10 @@ const getContent = async (id: string | undefined): Promise<IContent> => {
   const response = (await instance.get(`/${import.meta.env.VITE_GIST_ID}`));
   const file = response.data.files[`${id}.json`];
   if (!file?.raw_url) {
-    return {};
+    return {} as IContent;
   }
   const { data } = (await instance.get(file.raw_url));
-  return data || {};
+  return data || {} as IContent;
 };
 
 export { getContent };
