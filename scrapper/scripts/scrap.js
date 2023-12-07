@@ -22,7 +22,7 @@ const getGuildsListUrl = "/users/@me/guilds",
 const instance = axios.create({
   baseURL: base_url,
   timeout: 20000,
-  headers: { "Authorization": process.argv[2] === "--user" ? user_token : `Bot ${bot_token}` },
+  headers: { "Authorization": process.argv.includes("--user") ? user_token : `Bot ${bot_token}` },
 });
 
 /** Create scrapping output directory */
@@ -63,7 +63,7 @@ const getGuildMessages = async (guildId, year) => {
   let data = [];
   const channels = await getGuildChannelsList(guildId);
   for (const { id, name } of channels) {
-    console.log(name);
+    console.log(`-----\n${name}`);
     let channelMessages = [];
     let stop = false;
     const params = {
@@ -78,15 +78,17 @@ const getGuildMessages = async (guildId, year) => {
           return e;
         });
       const messages = response.data || [];
+      process.stdout.clearLine(); process.stdout.cursorTo(0);
       if (!messages.length || moment(_.last(messages).timestamp).year() < year) {
         channelMessages = channelMessages.concat(messages.filter(m => moment(m.timestamp).year() >= year));
+        process.stdout.write(` ->${channelMessages.length} messages\n`);
         stop = true;
       } else {
+        process.stdout.write(moment(_.last(messages).timestamp).format("YYYY-MM-DD"));
         channelMessages = channelMessages.concat(messages);
         params.before = _.last(messages).id;
       }
     }
-    console.log(` ->${channelMessages.length} messages`);
     data = data.concat(channelMessages);
   }
   console.log("--------");
