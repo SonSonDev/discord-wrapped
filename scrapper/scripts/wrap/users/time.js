@@ -10,24 +10,24 @@ export const fillHours = (hoursArray, message) => {
   const hour = moment(message.timestamp).hour();
 
   let index = hoursArray.findIndex(c => c.hour === hour);
-  hoursArray[index].count += 24 / 365;
+  hoursArray[index].count += 1 / 365;
 
   return hoursArray;
 };
 
 export const fillDays = (daysArray, message) => {
+  if (!daysArray.length) {
+    daysArray = (new Array(7)).fill(1).map((_, i) => ({
+      day: i + 1,
+      name:  moment((i + 1) % 7, "e").format("ddd"),
+      count: 0,
+    }));
+  }
+
+
   const day = moment(message.timestamp).isoWeekday();
-  const dayName = moment(message.timestamp).format("ddd");
 
   let index = daysArray.findIndex(c => c.day === day);
-  if (index === -1) {
-    daysArray.push({
-      day,
-      name: dayName,
-      count: 0,
-    });
-    index = daysArray.length - 1;
-  }
   daysArray[index].count += 7 / 365;
 
   return daysArray;

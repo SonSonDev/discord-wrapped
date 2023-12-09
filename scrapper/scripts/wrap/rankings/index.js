@@ -3,13 +3,13 @@ import fillMentions from "../users/mentions.js";
 import { messagesNumber, emojisNumber, linksNumber, picturesNumber, editsNumber, spoilsNumber } from "./users.js";
 
 const rankingsList = [
-  ["messagesNumber", "Messages", messagesNumber],
-  ["emojisNumber", "Emojis", emojisNumber],
-  ["linksNumber", "Liens partagés", linksNumber],
-  ["picturesNumber", "Images envoyées", picturesNumber],
-  ["editsNumber", "Messages modifiés", editsNumber],
-  ["spoilsNumber", "Spoils", spoilsNumber],
-  ["mentionsNumber", "Mentions", fillMentions],
+  [ "messagesNumber", "Messages", messagesNumber ],
+  [ "emojisNumber", "Emojis", emojisNumber ],
+  [ "linksNumber", "Liens partagés", linksNumber ],
+  [ "picturesNumber", "Images envoyées", picturesNumber ],
+  [ "editsNumber", "Messages modifiés", editsNumber ],
+  [ "spoilsNumber", "Spoils", spoilsNumber ],
+  [ "mentionsNumber", "Mentions", fillMentions ],
 ];
 
 const wrapRankings = (messages) => {
@@ -28,7 +28,7 @@ const wrapRankings = (messages) => {
     return acc;
   }, rankings);
   rankings.map((a) => {
-    a.users = getTop(sort(a.users, "count"), 10);
+    a.users = getTop(sort(a.users, "count"), 30);
   });
 
   return rankings;

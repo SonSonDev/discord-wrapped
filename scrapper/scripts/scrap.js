@@ -35,7 +35,7 @@ const createOutputDirectory = (guildId) => {
 /** Get Discord bot guilds list */
 const getGuildsList = async () => {
   const data = (await instance.get(getGuildsListUrl)).data;
-  fs.writeFileSync(`${__dirname}/scrapper/output/guilds.json`, JSON.stringify(data));
+  fs.writeFileSync(`${__dirname}/scrapper/output/guilds.json`, JSON.stringify(data, null, 2));
   return data;
 };
 
@@ -84,7 +84,7 @@ const getGuildMessages = async (guildId, year) => {
         process.stdout.write(` ->${channelMessages.length} messages\n`);
         stop = true;
       } else {
-        process.stdout.write(moment(_.last(messages).timestamp).format("YYYY-MM-DD"));
+        process.stdout.write(Math.floor(100 - moment(_.last(messages).timestamp).diff(moment(year, "YYYY"), "days") / 365 * 100) + "%");
         channelMessages = channelMessages.concat(messages);
         params.before = _.last(messages).id;
       }
