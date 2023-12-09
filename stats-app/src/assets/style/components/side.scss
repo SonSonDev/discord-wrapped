@@ -12,14 +12,14 @@
   }
 
   &__opener {
-    @apply absolute bg-dark w-8 text-yellow-1;
+    @apply absolute bg-dark w-8 text-yellow-1 border-yellow-1 border-2;
     font-weight: 600;
     top: 50%;
-    line-height: 40px;
+    line-height: 36px;
+    padding-bottom: 4px;
     width: 40px;
     border-radius: 2px;
     left: -60px;
-    padding-bottom: 2px;
     transform: translateY(-50%);
     transition: all 0.3s ease;
   }

@@ -76,9 +76,8 @@ const Wrapped: React.FC = (): JSX.Element => {
       <div className="page">
         <header>
           <h1>
-            Discord Wrapped of
-            <span className="guild__name whitespace-nowrap mx-3">{content.guild.name}</span>
-            {content.year}
+            Discord Wrapped <span className="year">{content.year}</span> of
+            <span className="guild__name">{content.guild.name}</span>
           </h1>
         </header>
 

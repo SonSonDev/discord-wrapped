@@ -3,8 +3,19 @@
   background-repeat: repeat;
 
   header {
-    @apply whitespace-pre-wrap mb-3;
+    @apply whitespace-normal mb-3;
     line-height: 1;
+    @screen lg {
+      @apply whitespace-pre-wrap;
+    }
+  }
+
+  .guild__name  {
+    @apply whitespace-nowrap mx-3 bg-dark text-yellow-1
+  }
+
+  .year {
+    @apply bg-dark text-yellow-1
   }
 
   .page {
@@ -13,7 +24,7 @@
 }
 
 .nav {
-  @apply mb-4;
+  @apply mb-8;
 
   a {
     @apply px-2 py-1;
@@ -31,7 +42,7 @@
   @apply mt-2 mb-4;
 
   &__name {
-    @apply flex items-center ml-4 mb-4;
+    @apply flex items-center ml-4 mb-2;
 
     img {
       @apply w-8 rounded-xl;
@@ -41,7 +52,7 @@
 
 .categories {
   h4 {
-    font-size: 32px;
+    @apply text-lg;
   }
   &__item {
     @apply mb-6 ml-2;

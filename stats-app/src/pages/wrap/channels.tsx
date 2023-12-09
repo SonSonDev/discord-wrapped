@@ -17,7 +17,7 @@ const ChannelsWrapped: React.FC<IProps> = (props: IProps): JSX.Element => {
       {
         <div key={c.name}
              className="user" >
-          <div className="user__name mb-4">
+          <div className="user__name">
             <h3>{c.name}</h3><span className="count ml-2">{c.count}</span>
           </div>
           <div className="categories">
