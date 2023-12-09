@@ -1,5 +1,8 @@
 .side {
-  @apply p-2 overflow-y-auto flex-shrink-0 py-12 px-4;
+  @apply fixed top-0 bottom-0 bg-yellow-1 flex-shrink-0 py-14;
+  overflow-x: visible;
+  left: 100%;
+  transition: all 0.3s ease;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -8,8 +11,40 @@
     display: none;
   }
 
+  &__opener {
+    @apply absolute bg-dark w-8 text-yellow-1;
+    font-weight: 600;
+    top: 50%;
+    line-height: 40px;
+    width: 40px;
+    border-radius: 2px;
+    left: -60px;
+    padding-bottom: 2px;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+  }
+
+  &.opened {
+    @apply -translate-x-full border-l-dark border-l-2;
+
+    .side__opener {
+      left: -20px;
+    }
+  }
+
+  @screen lg {
+    @apply static w-auto py-0;
+    &.opened {
+      @apply translate-x-0
+    }
+    .side__opener {
+      display: none;
+    }
+  }
+
+
   ul {
-    @apply p-2;
+    @apply py-6 px-8 overflow-y-auto h-full;
 
     li {
       @apply mb-2;

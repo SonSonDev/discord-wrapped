@@ -1,5 +1,5 @@
 html {
-  @apply text-white;
+  @apply text-white bg-yellow-1;
   font-size: 24px;
 }
 
@@ -33,4 +33,23 @@ h4 {
 
 .page {
   @apply h-screen py-6 overflow-hidden;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: theme('colors.dark') transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: theme('colors.dark');
+  border-radius: 2px;
+  border: 0px solid transparent;
 }

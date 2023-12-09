@@ -4,9 +4,6 @@ html {
   user-select: none;
 }
 
-body {
-}
-
 h1 {
   @apply text-3xl;
 }
@@ -20,7 +17,7 @@ h3 {
 }
 
 h4 {
-  @apply text-lg;
+  @apply text-lg mb-2;
 }
 
 .content {
@@ -35,14 +32,30 @@ h4 {
     content: '';
     left: 0;
     width:100%;
-    box-shadow: 0px 0px 20px 40px #B4AF9B;
   }
 
   &:before {
     top: 55px;
+    box-shadow: 0px -30px 20px 70px #B4AF9B
   }
 
   &:after {
     bottom: 30px;
+    box-shadow: 0px 0px 20px 40px #B4AF9B;
   }
+}
+
+// PREVENT ADDRESS BAR HIDING
+html {
+  overflow: hidden;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  position: fixed;
+  /* prevent overscroll bounce*/
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  /* iOS velocity scrolling */
 }

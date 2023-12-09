@@ -8,9 +8,9 @@ import UsersWrapped from "./wrap/users";
 import ComponentSide, { ILink } from "../components/ComponentSide";
 
 enum Sections {
-  users = "users",
-  channels = "channels",
   rankings = "rankings",
+  channels = "channels",
+  users = "users",
 }
 
 const Wrapped: React.FC = (): JSX.Element => {
@@ -68,14 +68,11 @@ const Wrapped: React.FC = (): JSX.Element => {
     });
 
   } else if (!section || !(Object.values(Sections) as string[]).includes(section)) {
-    element = <Navigate replace to={`/${id}/${Sections.users}`} />;
+    element = <Navigate replace to={`/${id}/${Sections.rankings}`} />;
   }
 
   return (
     <div className="content">
-
-      <ComponentSide links={links} />
-
       <div className="page">
         <header>
           <h1>
@@ -86,21 +83,24 @@ const Wrapped: React.FC = (): JSX.Element => {
         </header>
 
         <nav className="nav">
-          <Link className={section === Sections.users ? "active" : ""}
-                to={`/${id}/${Sections.users}`}>Membres
+          <Link className={section === Sections.rankings ? "active" : ""}
+                to={`/${id}/${Sections.rankings}`}>Classements
           </Link>
           <span className="mx-2">/</span>
+
           <Link className={section === Sections.channels ? "active" : ""}
                 to={`/${id}/${Sections.channels}`}>Salons
           </Link>
           <span className="mx-2">/</span>
-          <Link className={section === Sections.rankings ? "active" : ""}
-                to={`/${id}/${Sections.rankings}`}>Classements
+          <Link className={section === Sections.users ? "active" : ""}
+                to={`/${id}/${Sections.users}`}>Membres
           </Link>
         </nav>
 
         {element}
       </div>
+
+      <ComponentSide links={links} />
     </div>
   );
 };

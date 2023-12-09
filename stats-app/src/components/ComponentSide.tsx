@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export interface ILink {
@@ -14,8 +14,14 @@ interface IProp {
 
 
 const ComponentSide: React.FC<IProp> = (props: IProp): JSX.Element => {
+  const [ isOpened, toggleSide ] = useState<boolean>(false);
+
   return (
-    <div className="side">
+    <div className={`side ${isOpened ? "opened" : ""}`}>
+      <button className="side__opener"
+              onClick={() => toggleSide(!isOpened)}>
+        {!isOpened ? "<" : ">"}
+      </button>
       <ul>
         {
           props?.links?.map(l => (
