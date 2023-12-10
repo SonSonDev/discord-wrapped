@@ -4,13 +4,6 @@
   left: 100%;
   transition: all 0.3s ease;
 
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   &__opener {
     @apply absolute bg-dark w-8 text-yellow-1 border-yellow-1 border-2;
     font-weight: 600;
