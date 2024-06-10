@@ -63,28 +63,7 @@ body {
   height: 100%;
   position: fixed;
   /* prevent overscroll bounce*/
-  overflow-y: auto;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   /* iOS velocity scrolling */
-}
-
-// SCROLLBARS
-* {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scrollbar-color: theme('colors.dark');
-  
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background-color: theme('colors.dark');
-    border-radius: 1px;
-    border: 0px solid transparent;
-  }
 }
